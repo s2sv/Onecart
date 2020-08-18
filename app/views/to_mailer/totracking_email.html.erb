@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi!</h1>
+    <p>
+       An order was placed with <a href="<%= @haastig %>">Haastig.com</a> by <%= @from_email %>.
+    </p>
+    <p>
+      Order No: [<%= @orderno %>]
+    </p>
+    <p>
+      To track the parcel sent your way, just follow this link: <a href="<%= @url %>">Tracking Link</a>. 
+    </p>
+    <p>Have a great day!</p>
+  </body>
+</html>

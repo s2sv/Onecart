@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+	<meta charset="UTF-8"> <meta name=viewport content="width=device-width, initial-scale=1">
+
+
+   	<title>Haastig | Go Go Go!</title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <title>Haastig</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV["GOOGLE_API_SERVER_KEY"]}" %>
+
+<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+<%= favicon_link_tag asset_path('rabbit-icon-180x180.png') %>
+
+  </head>
+
+  <body>
+
+    <br>
+    <br>
+
+    
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/alert' %>
+
+    <!-- <div style="text-align:center;"></div> -->
+      
+
+    
+    
+    <%= yield %>
+
+
+  </body>
+</html>

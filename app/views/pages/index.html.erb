@@ -1,0 +1,75 @@
+<div class="container">
+
+  <br>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        
+        <div id ="pcart-item" >
+          <%= render 'pcart_items' %>
+        </div>
+            
+      </div>
+
+      <div class="col-md-8 order-md-1">
+
+        <div id="contact">
+          <%= render 'contact_form' %>
+        </div>
+
+      </div>
+
+    </div>
+            
+ 
+    <div>
+      <%= link_to 'Back', home_path, :class => "btn" %>
+    </div>
+
+
+
+
+
+
+  
+	<!-- Footer section begins here -->
+
+    <hr>
+
+    <footer class="container py-5">
+    <div class="row">
+    
+    <div class="col-12 col-md">
+      <%= image_tag 'sLogo.png', style: 'height:20%;width:auto;' %>
+      <p></p>
+      <p>All Rights Reserved © 2020. </p>
+      <p></p>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Status</h5>
+      <ul class="list-unstyled text-small">
+        <div><a class="text-muted" href="<%= bozza_path %>" target="_blank">Lockdownbozza</a></div>
+        <div><a class="text-muted" href="<%= jh_path %>" target="_blank">John Hopkins</a></div>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <div><a class="text-muted" href="<%= nicd_path %>" target="_blank">NICD</a></div>
+        <div><a class="text-muted" href="<%= gov_path %>" target="_blank">Gov</a></div>
+      </ul>
+    </div>
+   
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="<%= legal_path %>">Legal</a></li>
+      </ul>
+    </div>
+    </div>
+
+  
+  
+     
+ </footer>
+</div>

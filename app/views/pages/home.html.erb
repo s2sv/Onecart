@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<!-- Header begins here -->
+
+	<div id="header" class="header">
+		<div class="container">
+    
+        <div class="row" id= "frontrow">
+        
+          <div class="col-lg-12 col-md-12 my-auto">
+            
+            <h1>Parcels in a rush?</h1>
+            <%# <h3 style="font-style: italic">Use <i style="font-style: italic; font-size: 30px; color: #F167B0">HAASTIG</i> - your sustainable and efficient logistics partner.</h3> %>
+            <h3 style="font-style: italic">Convenient last mile delivery without compromise!</h3>
+          </div>
+
+          <div class="flex-container ml-auto mr-auto" id="front2">
+            <div class="btn-grp">
+
+              <%# <%= link_to 'GO GO GO!', new_user_registration_path, :class => "flex-1 btn btn-lg btn-primary"  %> 
+              <%# <%= link_to 'Get Quotes', "#quote", :class => "flex-3 btn btn-lg ml-auto mr-1 my-2 my-sm-0", data: { turbolinks: false }   %>
+
+              <%= link_to 'Get Quotes', new_user_registration_path, :class => "flex-1 btn btn-lg btn-primary" %>
+              
+              
+           </div>
+          </div>
+
+        </div>
+      
+    </div>
+    <a href="#quote" class="ca3-scroll-down-link ca3-scroll-down-arrow" id="arrow" data-turbolinks="false" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+	</div>
+<br>
+  <br>
+  <!-- Quote section starts here -->
+  
+
+
+ <%# <br>
+  <br>
+
+	<div id="quote" class="quote">
+		<div class="container" id="qw">
+			<h2>Get quotes</h2>
+			  <p></p>
+
+        <div id="contact">
+          <%= render 'contact_form' %>
+        <%# </div>
+
+
+          
+     
+
+    </div>
+	</div>
+
+  <br>
+
+  <hr class="mb-4 w-50">
+ 
+
+
+  <br>
+  <br> %>
+
+  
+  <!-- Services section starts here -->
+	<div id="services" class="services">
+		<div class="container">
+			<h2>How it works</h2>
+			<p></p>
+			<div class="row">
+				<div class="col-lg-3 col-md-3">
+					<i class="fas fa-box" id="one"></i>
+					<h4>1. Provide your parcel details</h4>
+					<p>It's paperless and effortless!</p>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<i class="fas fa-map-marker-alt" id="two"></i>
+					<h4>2. Choose point A and B</h4>
+		      <p>Just start typing and geolocation does the rest.</p>
+				</div>
+
+				<div class="col-lg-3 col-md-3">
+					<i class="fas fa-search-dollar" id="three"></i>
+					<h4>3. Compare quotes and GO!</h4>
+          <p>From same-day to traditional, cheapest or fastest!</p>
+			
+				</div>
+
+				<div class="col-lg-3 col-md-3">
+					<i class="fas fa-shipping-fast" id="four"></i>
+					<h4>4. We collect and deliver</h4>
+          <p>...while you keep an eye on your LIVE tracking link.</p>
+				</div>
+        </div>
+
+    	</div>
+	
+	</div>
+
+  	<!-- Footer section begins here -->
+
+  <div id="footer" class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4" >
+          <h4>Contact us</h4>
+          <p><i class="fas fa-home"></i> Office 301, 3rd Floor, Eikestad Mall, Stellenbosch, 7599</p>
+          <p><i class="fas fa-envelope"></i> info@haastig.com</p>
+          <%# <p><i class="fas fa-phone"></i> +27 (0)21 808 1864</p> %>
+        </div>
+
+        <div class="col-lg-4 col-md-4" >
+          <h4>About</h4>
+          <p>A simple and flexible delivery service - offering clients the ability to manage their delivery needs through an online dashboard, live tracking, and secure online payment functionality. </p> 
+        </div>
+
+        <div class="col-lg-4 col-md-4" >
+          <h4>Stay in touch</h4>
+            <%# <a href="#"><i class="social fab fa-twitter"></i></a> %>
+                <%# <a href="#"><i class="social fab fa-instagram"></i></a> %>
+          <div style="width: 20%; float:left">
+              <i class="social fab fa-linkedin-in"></i>
+          </div>
+
+          <div id="RR" style="width: 80%; float:right">
+              <p><a href="<%= linkedin_path %>" target="_blank" style="color:#fff; font-weight:bold">LinkedIn</a></p>
+          </div>
+          
+            <%# 
+                      <input type="email" name="email" placeholder="Subscribe for updates">
+                      <button class="btn btn-success">Subscribe</button> %>
+       </div>
+
+      </div>
+
+        <div class="row1">
+          <div class="col-lg-12 col-md-12">
+          <p>All Rights Reserved © Haastig Logistics (Pty) Ltd, 2020. | <span><a href="<%= legal_path %>" style="color:#999; font-weight:bold">Legal</a></span> </p>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+	<!-- x -->
+
+<%# <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> 
+
+
+<%# <script>
+var offset = 120;
+
+    $('.navbar li a').click(function(event) {
+        event.preventDefault();
+        $($(this).attr('href'))[0].scrollIntoView();
+        scrollBy(0, -offset);
+    });
+</script> %> 

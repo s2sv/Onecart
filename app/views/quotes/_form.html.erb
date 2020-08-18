@@ -1,0 +1,248 @@
+
+
+  <br>
+
+  <%= simple_form_for(@order) do |f| %>
+    <%= f.simple_fields_for :quotes do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+
+   
+
+        <div class="container">
+
+               <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          
+          <div class="row">
+
+           <div class="row mx-auto">
+                <p><i class="animate-icon fas fa-carrot" style="color: #ff9100"></i>&nbsp;&nbsp;&nbsp;<%= @noqmessage %></p>
+          </div>
+
+
+          <div class = "container text-center">
+        
+              <p><%= @why0 %></p>
+              <p><%= @why1 %></p>
+              <p style="color: red; font-weight: bold"><%= @why2 %></p>
+           <% if @showgif == true  %> 
+        
+         <picture>
+         <%= image_tag 'autocomplete.gif' %>
+        </picture>
+        
+           <% end  %>
+              <p><%= @why3 %></p>
+              <p><%= @why4 %></p>
+              <p><%= @why5 %></p>
+
+            
+           
+          </div>
+
+                <div class="input-group">
+                          
+        <% if @noqflag1 == false  %>
+              
+                  <div class="col-md-4 col-lg-4 col-sm-4">
+                        
+                        <label>
+                              <input type="radio" name="product" class="card-input-element" value="bike"/>
+
+                            <div class="panel panel-default card-input">
+                              <div class = "icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="panel-heading" style="text-align: center">On Demand: Motorcycle</div>
+                                <div class="panel-heading" style="text-align: center">Same day</div>
+                                  <div class="panel-body">
+                                      <div class="price">R<%= @pbikequote %></div>
+                                          <p class="card-text" style="text-align: center">Delivery duration: <%= @pbikeduration %></p>
+                                
+                                    </div>
+                            </div>
+
+                        </label>
+                        
+                  </div>
+
+      <% end  %>
+
+<% if @noqflag2 == false  %>
+
+                      <div class="col-md-4 col-lg-4 col-sm-4">
+                        
+                        <label>
+                              <input type="radio" name="product" class="card-input-element" value="car" />
+
+
+                            <div class="panel panel-default card-input">
+                              <div class = "icon"><i class="fas fa-car-side"></i></div>
+                                <div class="panel-heading" style="text-align: center">On Demand: Vehicle</div>
+                                <div class="panel-heading" style="text-align: center">Same day</div>
+                                  <div class="panel-body">
+                                      <div class="price">R<%= @pcarquote %></div>                                
+                                          <p class="card-text" style="text-align: center">Delivery duration: <%= @pcarduration %></p>
+                                  
+                                  
+
+                                  </div>
+                            </div>
+
+                        </label>
+                        
+                      </div>
+
+<% end  %>
+
+   <% if @noqflag5 == false  %>
+              
+                  <div class="col-md-4 col-lg-4 col-sm-4">
+                        
+                        <label>
+                              <input type="radio" name="product" class="card-input-element" value="van"/>
+
+                            <div class="panel panel-default card-input">
+                              <div class = "icon"><i class="fas fa-truck"></i></div>
+                                <div class="panel-heading" style="text-align: center">On Demand: Van</div>
+                                <div class="panel-heading" style="text-align: center">Same day</div>
+                                  <div class="panel-body"> 
+                                      <div class="price">R<%= @pvanquote %></div>
+                                          <p class="card-text" style="text-align: center">Delivery duration: <%= @pvanduration %></p>
+                                
+                                    </div>
+                            </div>
+
+                        </label>
+                        
+                  </div>
+
+      <% end  %>
+
+<% if @noqflag3 == false  %>
+
+                      <div class="col-md-4 col-lg-4 col-sm-4">
+                        
+                        <label>
+                             <input type="radio" name="product" class="card-input-element" value="cheap" />
+
+                            <div class="panel panel-default card-input">
+                              <div class = "icon"><i class="fas fa-money-bill-wave"></i></div>
+                                <div class="panel-heading" style="text-align: center">Traditional: Cheapest</div>
+                                 <p class="card-text" style="text-align: center">(Overnight before 16:00) </p> 
+                                  <div class="panel-body">
+                                        <div class="price">R<%= @tpcheapest %></div>
+                                            <p class="card-text" style="text-align: center">Collection by: <%= @tpcheapest_collect %></p>
+                                            <p class="card-text" style="text-align: center">Estimated delivery: <%= @tpcheapest_delivery %></p>
+
+                                  </div>
+                            </div>
+
+                        </label>
+                        
+                      </div>
+
+<% end  %>
+
+<% if @noqflag4 == false  %>
+
+                      <div class="col-md-4 col-lg-4 col-sm-4">
+                        
+                        <label>
+                              <input type="radio" name="product" class="card-input-element" value="fast"/>
+
+                            <div class="panel panel-default card-input">
+                              <div class = "icon"><i class="fas fa-shipping-fast"></i></div>
+                                <div class="panel-heading" style="text-align: center">Traditional: Fastest</div>
+                                 <p class="card-text" style="text-align: center">(Overnight before 10:00) </p> 
+                                  <div class="panel-body">
+                                        <div class="price">R<%= @tpfastest %></div>
+                                            <p class="card-text" style="text-align: center">Collection by: <%= @tpfastest_collect %></p>                                            
+                                            <p class="card-text" style="text-align: center">Estimated delivery: <%= @tpfastest_delivery %></p>
+                                  </div>
+                            </div>
+
+                        </label>
+                        
+                      </div>
+
+<% end  %>
+
+
+
+                          <%= f.input :quote_response, :as => :hidden, :input_html => { :value =>  @quote_response } %>
+
+                          <%= f.input :vehicle_id, :as => :hidden %>
+
+                          <%= f.input :price_incl_vat, :as => :hidden %>
+                          
+                         
+
+                </div>
+
+          </div>
+          
+             <hr>
+            <div class="btn-grp mx-auto">
+              <div class="form-actions mx-auto">
+                <%= f.button :submit ,"Select", id: "select_button" %>
+              </div>
+            </div>
+            <hr>
+
+        </div>
+
+      </div>
+
+
+    <% end %>
+  <% end %>
+
+
+
+<script>
+
+$(document).ready(function() {
+
+
+$('#select_button').prop("disabled", true);
+
+
+
+    $('input:radio[name=product]').change(function() {
+
+       $('#select_button').removeAttr('disabled');
+
+        if (this.value == 'bike') {
+           
+             $('#order_quotes_attributes_0_vehicle_id').val("vehicle-motorcycle");
+            $('#order_quotes_attributes_0_price_incl_vat').val(<%= @pbikequote %>);
+          
+        }
+        else if (this.value == 'car') {
+            
+             $('#order_quotes_attributes_0_vehicle_id').val("vehicle-car");
+            $('#order_quotes_attributes_0_price_incl_vat').val(<%= @pcarquote %>);
+        
+        }
+         else if (this.value == 'van') {
+            
+             $('#order_quotes_attributes_0_vehicle_id').val("vehicle-small-van");
+            $('#order_quotes_attributes_0_price_incl_vat').val(<%= @pvanquote %>);
+        
+        }
+         else if (this.value == 'cheap') {
+           
+            $('#order_quotes_attributes_0_vehicle_id').val("vehicle-cheap");
+            $('#order_quotes_attributes_0_price_incl_vat').val(<%= @tpcheapest %>);
+         
+        }
+         else if (this.value == 'fast') {
+            
+           $('#order_quotes_attributes_0_vehicle_id').val("vehicle-fast");
+            $('#order_quotes_attributes_0_price_incl_vat').val(<%= @tpfastest %>);
+           
+        }
+    });
+});</script>
+

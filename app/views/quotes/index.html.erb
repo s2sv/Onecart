@@ -1,0 +1,34 @@
+<p>User: <%= current_user.username %></p>
+
+<div class = "container">
+
+<h1>Quotes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Price incl vat</th>
+      <th>Order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quotes.each do |quote| %>
+      <tr>
+        <td>R<%= quote.price_incl_vat %></td>
+        <td><%= quote.order_id %></td>
+     
+        <td><%= link_to 'Show Order', [@order] %></td>
+        <td><%= link_to 'Edit', edit_order_quote_path(@order, quote) %></td>
+        <td><%= link_to 'Delete', [@order, quote], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%# <%= link_to 'New Quote', new_order_quote_path(@order) %> 
+<br>
+<%= link_to 'Back', orders_path %> |

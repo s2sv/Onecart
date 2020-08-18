@@ -1,0 +1,35 @@
+
+
+<div class = "container">
+
+<h1>Parcels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+     <th>Parcel Ref. No.</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parcels.each do |parcel| %>
+      <tr>
+        <td><%= parcel.order_id %></td>
+        <td><%= parcel.reference %></td>
+        <td><%= parcel.size %></td>
+     
+        <td><%= link_to 'Show Order', [@order] %></td>
+        <td><%= link_to 'Edit', edit_order_parcel_path(@order, parcel) %></td>
+        <td><%= link_to 'Delete', [@order, parcel], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Parcel', new_order_parcel_path(@order) %> 
+<br>
+<%= link_to 'Back', orders_path %> |

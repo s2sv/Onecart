@@ -1,0 +1,12 @@
+<div class = "container">
+<h1>Edit Order</h1>
+</div>
+
+<%= render 'form', order: @order %>
+
+<div class = "container">
+    <%= link_to 'Back', orders_path, data: { turbolinks: false }, :class => "btn" %> |
+    <%= link_to 'Show', @order, data: { turbolinks: false }, :class => "btn" %>
+</div>
+    <br>
+

@@ -1,0 +1,116 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#neworder.container div#left-side.col-lg-6.col-md-6 {
+    border-right: 1px solid lightgray;
+}
+
+#neworder.container div.field {
+    padding-bottom: 15px;
+}
+
+svg.svg-inline--fa.fa-carrot.fa-w-16.fa-spin{
+    width: 55.06px;
+   
+}
+
+#indexorder a.flex-3.btn.ml-auto{
+	margin-right: 5px;
+    border-radius: 5;
+    font-weight: bold;
+	border: 0;
+    background-color: #F167B0 !important;
+    border-color: #F167B0 !important;
+
+    width: 81.02px;
+    height: 37.29px;
+}
+
+
+
+#indexorder a.flex-3.btn.ml-auto:hover{
+	background-color: #ededed !important;
+	color: #3c3c3c !important;
+	border: 1px  solid #fff !important;
+}
+
+#indexorder{
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+margin-left: 40px;
+margin-right: 40px;
+
+.tableFixHead          { overflow-y: auto; height: 100%; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+
+// /* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 8px; }
+th     { background:#eee; }
+
+
+}
+
+
+.bounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce 0.5s infinite linear;
+    -o-animation: bounce 0.5s infinite linear;
+    -webkit-animation: bounce 0.5s infinite linear;
+    animation: bounce 0.5s infinite linear;
+    color:000;
+  }
+ 
+  
+  @-webkit-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @-moz-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @-o-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @-ms-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+
+
+#exampleModalLong > div {
+    // max-width: 100% !important;
+}
+
+#exampleModalLong > div > div > div.modal-body > ul > li {
+	list-style: none;
+    display: block;
+   
+}
+
+#exampleModalLong > div > div > div.modal-body > ul {
+    display: inline-block;
+}
+
+.modal-header .close {
+    display:none;
+  }

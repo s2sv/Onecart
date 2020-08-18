@@ -1,0 +1,19 @@
+<div class = "container">
+
+   
+    <br> 
+
+    <div id ="cart-item" >
+    <%= render 'cart_items' %>
+    </div>
+
+
+  
+    
+
+
+
+     <%= link_to 'Back', orders_path, :class => "btn" %> |
+     <%= link_to 'Clear cart', cart_path(), method: :delete, :class => "btn" %>
+    
+</div>

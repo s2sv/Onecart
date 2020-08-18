@@ -1,0 +1,237 @@
+
+<div id="indexorder">
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+
+   <h1>Quotes / Orders</h1>
+
+  <hr>
+
+  <div class="btn-grp mx-auto ">
+    <%= link_to 'Get Quotes', new_order_path, data: { turbolinks: false }, :class => "btn" %>
+  </div>
+
+  <hr>  
+
+  <div class="tableFixHead">
+  <table>
+    <thead>
+      <tr>
+        <%# 0 %><th>Created On</th> 
+        <%# 1 %><th>Order No.</th> 
+        <%# 2 %><th>Customer Ref. No.</th>
+        <%# 3 %><th>From Address</th>
+        <%# 4 %><th>To Address</th>
+        <%# 5 %><th>&nbsp;&nbsp;&nbsp;&nbsp;Size</th>        
+        <%# 6s %><th><p>&nbsp;&nbsp;&nbsp;</p></th>
+        <%# 7 %><th></th>
+        <%# 8s %><th><p>&nbsp;&nbsp;&nbsp;</p></th>
+        <%# 9 %><th>Quoted</th>
+        <%# 10s %><th><p>&nbsp;&nbsp;&nbsp;</p></th>
+        <%# 11 %><th></th>
+        <%# 12s %><th><p>&nbsp;&nbsp;&nbsp;</p></th>
+        <%# 13 %><th><%= link_to 'Cart', cart_path %></th>
+        <%# 14s %><th><p>&nbsp;&nbsp;&nbsp;</p></th>
+        <%# 15 %><th>Processed</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% @orders.each do |order| %>
+        
+        <tr>
+
+          <%# 0 %><td width="100px"><%= order.created_at.to_date %></td>
+
+          <%# 1 %><td>[<%= order.id %>]</td>
+
+          <%# 2 %><td><%= order.customer_ref %></td>
+
+          <%# 3 %><td><%= order.from_address %></td>
+
+          <%# 4 %><td><%= order.to_address %></td>
+
+          <%# 5 %><td align="center">
+                      <% if order.parcels.second.present?%>  
+                        <%= "Multi Parcel" %>
+                      <% elsif order.parcels.first.present? %>  
+                        <% if order.parcels.first.size == "parcel-a4-envelope"%>
+                          <%= "Extra Small / A4" %>
+                          <% elsif order.parcels.first.size == "parcel-small" %>
+                          <%= "Small" %>
+                          <% elsif order.parcels.first.size == "parcel-medium" %>
+                          <%= "Medium" %>
+                          <% elsif order.parcels.first.size == "parcel-large" %>
+                          <%= "Large" %>
+                          <% elsif order.parcels.first.size == "parcel-xlarge" %>
+                          <%= "Extra Large" %>
+                          <% else %>
+                          <%= "N/A" %>
+                        <% end %>
+                      <% else %>
+                       <%= "N/A" %>
+                      <% end %>  
+                  </td>
+
+       
+
+          <%# 6s %><td><p>&nbsp;</p></td>
+
+          <%# 7 %><td> 
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to 'Quote Details', order, :class => "dropdown-item" %>
+                  <% if order.processed == false %>
+                    <% if order.quotes.first.present? %>
+                    <%= link_to 'Edit Quote', edit_order_path(order), data: { turbolinks: false }, :class => "dropdown-item disabled" %>
+                        <% else %>
+                          <%= link_to 'Edit Quote', edit_order_path(order), data: { turbolinks: false }, :class => "dropdown-item" %>
+                    <% end %>
+                  <%= link_to 'Delete Quote', order, method: :delete, data: { confirm: 'Are you sure?' }, :class => "dropdown-item" %>
+                  <% end %>
+                  
+                </div>
+            </div>
+          </td>
+
+          <%# 8s %><td><p>&nbsp;</p></td>
+          
+          <%# 9 %> 
+          <% if order.quotes.first.nil? %>
+
+          <td align="center"><i class="animate-icon fas fa-carrot" style="color: #ff9100"></i></td>
+
+          <% else %>
+            <% for quote in order.quotes %>
+             <td> R<%= quote.price_incl_vat %></td>
+              
+            <% end %>
+           <% end %>
+         
+
+    
+
+          <%# 10s %><td><p>&nbsp;</p></td>
+          
+          <%# 11 %><td>
+          <% if order.processed == true  %>
+                 <%= link_to 'Quote', order_path(order), :class => "flex-2 btn btn ml-auto disabled", disabled: true  %> 
+               <% elsif order.quotes.first.present? %>
+                 <%= link_to 'View', order_path(order), :class => "flex-3 btn btn ml-auto" %>
+               <% else %>
+                
+                 <%= link_to 'Quote', new_order_quote_path(order), :class => "flex-3 btn btn ml-auto", data: { disable_with: "<i class='fas fa-carrot fa-spin'></i>" } %>
+              <% end %>
+
+                  <%# order_quotes_path(order) %>
+              
+          </td>
+
+          <%# 12s %><td><p>&nbsp;</p></td>
+
+          <%# 13 %><td>
+          
+            <%= form_with model: @order_item do |f| %>
+              <%= f.hidden_field :order_id, value: order.id, class: "form-control" %>
+              <%= f.hidden_field :quantity, value: 1, min: 1, class: "form-control" %>
+            <% if order.processed == true %>
+              <%= button_tag type: 'submit', class: "btn disabled", name: 'route_to[single]', disabled: true do %>
+              <i class="fas fa-sort-up"></i>
+              <% end %>
+              <% else %>
+               <%= button_tag type: 'submit', class: "btn", name: 'route_to[bucket]' do %>
+              <i class="fas fa-sort-up"></i>
+              <% end %>
+              <% end %>
+            <% end %>
+          </td>
+
+          <%# 14s %><td><p>&nbsp;</p></td>
+
+          <%# 15 %><td align="center">
+          
+          <% if order.processed == true %>
+           <i class="fas fa-check-circle" style="color: green"></i>
+            <% else %>
+             <i class="fas fa-times-circle" style="color: orange"></i>
+          <% end %>
+          </td>
+        </tr>
+       
+      
+    
+          
+
+          <% if current_user && current_user.admin %>
+
+            <!-- do admin things here -->
+
+            <% end %>
+
+      <% end %>
+
+    </tbody>
+
+  </table>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+<script>
+
+$(document).ready(function() {
+    <% if flash[:modal] %>
+      
+    $('#exampleModalLong').modal()
+        
+    <% end %>
+});
+
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">We're open for business!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+
+        <p>We've opened our platform to allow deliveries of <span style="font-weight: bold;">*all goods</span>, as authorised by the South African Government. </p>
+
+       
+					<p>*Excluding alcohol and tobacco products.</p>
+			
+          <p>Should customers attempt to distribute alcohol and/or tobacco, we will not be permitted to assist and cancellation fees may apply to orders.</p>
+           <p></p>
+          <p><span style="font-weight: bold;">IMPORTANT:</span> By accepting and making use of Haastig's services you hereby agree to our <span><a target="_blank" href="<%= legal_path %>" style="font-weight:bold">T&C</a></span>'s.</p>
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <div class="btn-grp mx-auto">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

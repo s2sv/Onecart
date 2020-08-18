@@ -1,0 +1,54 @@
+
+<%= simple_form_for(@autocomplete) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+
+
+    <div class="field" >
+    <%= f.label 'Adress' %>
+    <%= f.text_field :address, id: :autocomplete_address, class: "form-control" %>
+</div>
+
+<div class="field">
+    <%= f.label 'Street number' %>
+    <%= f.number_field :street_number, id: :street_number, class: "form-control" %>
+</div>
+
+<div class="field">
+    <%= f.label 'Town' %>
+    <%= f.text_field :locality, id: :locality, class: "form-control" %>
+</div>
+
+<div class="field">
+        <%= f.label 'Name of channel' %>
+    <%= f.text_field :route, id: :route, class: "form-control" %>
+</div>
+
+<div class="field">
+    <%= f.label 'Area' %>
+    <%= f.text_field :administrative_area_level_1, id: :administrative_area_level_1, class: "form-control" %>
+</div>    
+    
+    <div class="field">
+        <%= f.label 'Country' %>
+    <%= f.text_field :country, as: :text, id: :country, class: "form-control" %>
+    </div>
+
+    <div class="field">
+        <%= f.label 'Postal code' %>
+    <%= f.number_field :postal_code, id: :postal_code, class: "form-control" %>
+</div>
+  
+  </div>
+
+
+ 
+
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

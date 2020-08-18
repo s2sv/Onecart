@@ -1,0 +1,175 @@
+// Place all the styles related to the quotes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/**
+  Default Markup
+**/
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/**
+  Component
+**/
+
+label {
+    width: 100%;
+}
+
+.card-input-element {
+    display: none;
+    
+}
+
+
+.card-input {
+    margin: 10px;
+    padding: 00px;
+    height: calc(280px + 2*1rem);
+    color: black;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: rgba(241, 103, 177, 0.198);
+    text-align: center;
+   
+}
+
+.card-input:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+     box-shadow: 0 0 1px 1px  #F167B0;
+
+    //  border: 2px solid #F167B0;
+     -webkit-transition: border .3s;
+     -o-transition: border .3s;
+     transition: border .3s;
+ }
+
+ .card-input-element:checked+.card-input::after {
+  content: '\e5ca';
+  color: rgba(241, 103, 177, 0.541);
+  font-family: 'Material Icons';
+  font-size: 24px;
+
+  -webkit-animation-name: fadeInCheckbox;
+  animation-name: fadeInCheckbox;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+ 
+  
+@-webkit-keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+  }
+}
+
+@keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateZ(0deg);
+  }
+}
+
+
+  
+div.price
+  {
+    text-align: center;
+    color: black;
+}
+
+div.icon
+  {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 50px;
+    color: #F167B0;
+
+}
+
+label {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.card-input-element+.card {
+  height: calc(36px + 2*1rem);
+  color: var(--primary);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.card-input-element+.card:hover {
+  cursor: pointer;
+}
+
+.card-input-element:checked+.card {
+  border: 2px solid var(--primary);
+  -webkit-transition: border .3s;
+  -o-transition: border .3s;
+  transition: border .3s;
+}
+
+.card-input-element:checked+.card::after {
+  content: '\e5ca';
+  color: #AFB8EA;
+  font-family: 'Material Icons';
+  font-size: 24px;
+  -webkit-animation-name: fadeInCheckbox;
+  animation-name: fadeInCheckbox;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@-webkit-keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+  }
+}
+
+@keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateZ(0deg);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+

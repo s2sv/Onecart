@@ -1,0 +1,2 @@
+module CancelledHelper
+end

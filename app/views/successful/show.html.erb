@@ -1,0 +1,40 @@
+
+
+
+<div class="container">
+
+    <h1>Here's some feedback:</h1>
+
+    <br>
+
+
+
+      <div class="container text-center">
+                <p><%= @message %></p>
+                <p><%= @success %></p>
+          </div>
+          
+
+
+          <div class = "container text-center">
+        
+              <p><%= @why0 %></p>
+              <p><%= @why1 %></p>
+              <p><%= @why2 %></p>
+              <p><%= @why3 %></p>
+           
+          </div>
+
+    <hr>    
+
+    <!-- <#= link_to 'Clear cart', cart_path(), method: :delete, :class => "btn" %> -->
+    
+
+    <%= link_to 'Back', orders_path, data: { turbolinks: false }, :class => "btn" %>
+
+    
+
+
+</div>
+
+

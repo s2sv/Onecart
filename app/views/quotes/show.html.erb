@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price incl vat:</strong>
+  <%= @quote.price_incl_vat %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @quote.order_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_quote_path(@order, @quote) %> |
+<%= link_to 'Back', order_quotes_path(@order) %>

@@ -1,0 +1,69 @@
+<div class = "container">
+
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span id="title" class="text-muted"> <h1>Cart</h1>
+ </span>
+        <span id="pill" class="badge badge-secondary badge-pill"><%= current_basket.order_items.size  %></span>
+      </h4>
+
+<ul class="list-group mb-3">
+
+    <% @order_items.each do |item| %>
+
+             <li class="list-group-item justify-content-between lh-condensed">
+    
+                <div class="row">
+
+                    <div class="col align-self-center">
+                        <%= form_with model: item do |f|%>
+                            <div class="float-left">
+                                
+                                <%= f.hidden_field :order_id, value: item.order.id %>
+                                <%= f.hidden_field :quantity, value: item.quantity.to_i %>
+                                <%# <%= f.submit "Update cart" %> 
+                                <%= link_to "Remove", item, method: :delete, remote: true, class: "form-control", id: "remove" %>
+                            
+                            </div>
+                        <% end %>
+                    </div>
+
+                    <div class="col align-self-center">
+                        <div style = "text-align:center; vertical-align: middle;">
+                            <strong style = "vertical-align: middle" class="text-muted">Order No: [<%= item.order.id %>]</strong>  
+                        </div>
+                    </div>
+                   
+                     
+
+                    <div class="col align-self-center">
+                        <div class="float-right">
+                            <strong style = "vertical-align: middle" class="text-muted">R<%= item.unit_price %></strong>  
+                        </div>
+                    </div>
+                 </div>
+
+                   
+               
+            </li>
+    
+    <% end %>
+
+    <li class="list-group-item d-flex justify-content-between">
+          <span></span>
+          <strong>Total (ZAR)  &nbsp;&nbsp;&nbsp;R<%= current_basket.subtotal  %></strong>  
+    </li>
+
+</ul>
+
+<%# _______________________________________________________________ %>
+    <br> 
+    
+
+    <%# down here is where we do the PAYMENT GATEWAY checkout setup YES  %>
+ 
+    <div class = "btn-grp mx-auto" >
+        <a href="https://www.payfast.co.za/eng/process?cmd=_paynow&amp;receiver=15333378&amp;item_name=<%= current_basket.orderlist %>&amp;amount=<%= current_basket.subtotal %>&amp;return_url=https%3A%2F%2Fhaastig.com%2Fsuccessful&amp;cancel_url=https%3A%2F%2Fhaastig.com%2Fcancelled"><button id="Pay" class='btn btn-primary'>Pay Now</button></a>
+    </div>
+    <hr>
+
+</div>

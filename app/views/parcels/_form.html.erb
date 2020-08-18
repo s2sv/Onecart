@@ -1,0 +1,45 @@
+
+
+ <%= simple_form_for(@order) do |f| %>
+    <%= f.simple_fields_for :parcels, @parcel do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+		<div class="row">
+
+		<div class="col-lg-6 col-md-6" id="cr-left-side">
+				<div class="field" >
+					<%= f.label 'Parcel Reference' %>
+					<%= f.text_field :reference, required: true, class: "form-control"  %>
+				</div>
+		</div>
+
+      	<div class="col-lg-6 col-md-6" id="ps-rigt-side">
+			<%= f.input :size, collection: [["Extra Small / A4 Envelope | Less than: [2kg] or [20cm x 20cm x 20cm]","parcel-a4-envelope"], ["Small | More than: [2kg] or [20cm x 20cm x 20cm]","parcel-small"], ["Medium | More than: [5kg] or [35cm x 35cm x 35cm]","parcel-medium"], ["Large | More than: [10kg] or [40cm x 40cm x 40cm]","parcel-large"], ["Extra Large | More than: [20kg] or [50cm x 50cm x 40cm] | Limited to: [50kg]","parcel-xlarge"]], include_blank: false, label: "Parcel size" %>
+				<p></p>
+				<div class="col justify-content-md-center">
+					
+					<a style="font-size: 12px"><span style="color:#F167B0;font-weight:bold">Please </span><span style="font-weight:bold;text-decoration: underline;">package your own parcel(s)</span> and we will do our best to keep them safe!</a>
+				</div>
+		</div>
+		
+ 
+				
+
+		
+
+		</div>
+
+		<br>	
+
+           <hr>
+            <div class="btn-grp mx-auto">
+              <div class="form-actions mx-auto">
+                <%= f.button :submit ,"Add"%>
+              </div>
+            </div>
+            <hr>
+
+      <% end  %>
+       <% end  %>
+

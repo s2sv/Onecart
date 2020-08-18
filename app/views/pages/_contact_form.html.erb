@@ -1,0 +1,242 @@
+
+
+<%= form_for @contact, url: pages_path, remote: true do |f| %>
+
+       
+        <div class="row mx-auto">
+
+        
+
+            	<div class="col-lg-6 col-md-6" id="left-side">
+            	<div class="field" >
+					<div id="geo1"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;<%= f.label 'From Address', :style => "text-align: left;" %></div>
+					<%= f.text_field :from_address, required: true, id: :from_autocomplete_address, class: "form-control"  %>
+				</div>
+            </div>
+
+            <p></p>
+            
+            <div class="col-lg-6 col-md-6" id="right-side">
+         	    <div class="field" id="ff" >
+					<div id="geo2"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;<%= f.label 'To Address', :style => "text-align: left;" %></div>
+					<%= f.text_field :to_address, required: true, id: :to_autocomplete_address, class: "form-control"  %>
+				</div>
+            </div>
+
+        </div>
+
+         <div class="row row justify-content-md-center" id="help">
+                 
+            <a style="font-size: 10px"><span style="color:#F167B0;font-weight:bold">Need help? </span>Just <span style="font-weight:bold">start typing</span> to <span style="font-weight:bold">search</span> and <span style="font-weight:bold">select</span> a geocoded address...</a>
+                
+        </div>
+
+        <div class="row mx-auto">
+           
+       
+
+              <div class="container" id="right-side">
+
+                <div class="btn-grp mx-auto">
+                    <%= f.submit "Go!", id: "select_button", class: "btn btn-lg btn-primary btn-block", data: { disable_with: "HOP'N..." } %>
+                </div>
+
+             </div>
+
+        </div>
+        
+                <%= f.hidden_field :from_faddress, id: :from_faddress, class: "form-control" %>
+                <%= f.hidden_field :to_faddress, id: :to_faddress, class: "form-control" %>
+
+                <%= f.hidden_field :from_complex, id:  :from_name, class: "form-control"  %>
+                <%= f.hidden_field :to_complex, id:  :to_name, class: "form-control"  %>
+
+                <%= f.hidden_field :from_latitude, id: :from_latitude, class: "form-control" %>
+				<%= f.hidden_field :from_longitude, id: :from_longitude, class: "form-control" %>
+
+                <%= f.hidden_field :to_latitude, id: :to_latitude, class: "form-control" %>
+				<%= f.hidden_field :to_longitude, id: :to_longitude, class: "form-control" %>
+
+                <%= f.hidden_field :vehicle_id, required: true, id: "vehicle", value:"vehicle-motorcycle", class: "form-control"  %>
+
+
+    
+             
+
+                <br>
+                <br>
+
+                
+        
+
+<% end %>
+       
+<script>
+
+$(document).ready(function() {
+
+
+// $('#select_button').prop("disabled", true);
+$('#bikecard').click();
+
+
+    $('input:radio[name=product]').change(function() {
+
+    //    $('#select_button').removeAttr('disabled');
+
+        if (this.value == 'bike') {
+           
+            $('#vehicle').val("vehicle-motorcycle");
+
+        }
+        else if (this.value == 'car') {
+            
+            $('#vehicle').val("vehicle-car");
+         
+        }
+         else if (this.value == 'cheap') {
+           
+            $('#vehicle').val("vehicle-cheap");
+
+        }
+       
+    });
+});
+
+//$(document).on('page:load', ready);
+
+</script>
+
+
+
+<script>
+
+<% if flash[:modal] %>
+      $('#exampleModalLong').modal()
+<% end %>
+
+
+$('#exampleModalLong').on('hidden.bs.modal', function () {
+  location.reload();
+});
+
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+       <a style="color:grey;font-size:20px;"> <%= @from %>  &#8680;    <%= @to %> </a>
+
+        <br>
+        <br>
+
+        <% if @choice == "vehicle-motorcycle" || @choice == "vehicle-car" || @choice == "vehicle-cheap" || @choice == "vehicle-fast" %>
+    
+            <div class="row justify-content-center">
+            
+               
+                <div id="qreturn">
+                <div class="panel panel-default">
+                    <div class = "iconmodal"><i class="fas fa-motorcycle"></i></div>
+                        <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">On Demand / Same-day </div>
+                        <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">Avg. Delivery Time < 1hr </div>
+                                        
+                        <div class="panel-body">
+                    </div>
+                </div>
+                
+
+                <br>
+
+                 <a style="color:grey;font-size:25px;"> R<%= @pbikequote %> </a>          
+
+                 </div>
+            
+                <div id="qreturn">
+                    <div class="panel panel-default">
+                        <div class = "iconmodal"><i class="fas fa-car-side"></i></div>
+                            <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">On Demand / Same-day </div>
+                                <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">Avg. Delivery Time < 1hr </div>
+                                                            
+                            <div class="panel-body">
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <a style="color:grey;font-size:25px;"> R<%= @pcarquote %> </a>       
+
+                </div>
+                   
+                <div id="qreturn">
+                        <div class="panel panel-default">
+                            <div class = "iconmodal"><i class="fas fa-shipping-fast"></i></div>
+                                <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">Traditional Courier</div>
+                                     <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">Avg. Delivery Time < 2day </div>
+
+                                <div class="panel-body">
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <a style="color:grey;font-size:25px;"> R<%= @tpcheapest %> </a>     
+                 </div>
+               
+               <!-- <div id="qreturn">
+                        <div class="panel panel-default">
+                            <div class = "iconmodal"><i class="fas fa-shipping-fast"></i></div>
+                                <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">Traditional Courier</div>
+                                   <div class="panel-heading" style="text-align: center; font-size: 10px; color:grey;">Avg. Delivery Time < 2days </div>
+                                                            
+                                <div class="panel-body">
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <a style="color:grey;font-size:25px;"> R<%= @tpfastest %> </a>     
+
+                 </div>
+               
+            </div> -->
+            
+
+        <% end  %>
+
+        <br>
+        <br>
+
+        <div>
+        <a style="color:grey;font-size:10px;"> *Please note that this is an estimated cost & duration based on a <span style="color:#F167B0;font-size:10px;font-weight:bold">single small parcel</span> and driver availability. To get more quotes and place orders, please log in. </a>
+        </div>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-grp mx-auto">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Contact Sales</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+       
+    
+
+   
+  
+
+  
+   

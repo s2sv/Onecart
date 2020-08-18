@@ -1,0 +1,317 @@
+<div class="container">
+
+
+
+    <h2>Quote Details</h2>
+
+    <hr>
+
+    <p>
+        <strong>Order Number:</strong>
+        <%=[@order.id] %>
+    </p>
+
+    <p>
+      <strong>Customer Reference Number:</strong>
+      <%= @order.customer_ref %>
+    </p>
+
+     <p>
+      <strong>Collection Date / Time:</strong>
+      <%= @order.scheduled_date %>
+    </p>
+
+    <hr>
+
+    <div class="dropdown show">
+      <strong>From Address:</strong>
+      
+      <div>
+      <%= @order.from_address %>
+      </div>
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Details</a>
+      
+      
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+        <% if @order.from_unit_no.present? %>
+        <a class="dropdown-item disabled" href="#"> <strong>Unit number:</strong>
+        <%= @order.from_unit_no %></a>
+        <% end %>
+
+        <% if @order.from_complex.present? %>
+        <a class="dropdown-item disabled" href="#"> <strong>Complex name:</strong>
+        <%= @order.from_complex %></a>
+        <% end %>
+
+          <a class="dropdown-item disabled" href="#"> <strong>Street number:</strong>
+        <%= @order.from_street_number %></a>
+          
+          <a class="dropdown-item disabled" href="#"><strong>Street name:</strong>
+        <%= @order.from_route %></a>
+
+        <a class="dropdown-item disabled" href="#"><strong>City:</strong>
+        <%= @order.from_locality %></a>
+
+        <a class="dropdown-item disabled" href="#"><strong>Province:</strong>
+        <%= @order.from_administrative_area_level_1 %></a>
+
+        <a class="dropdown-item disabled" href="#"> <strong>Country:</strong>
+        <%= @order.from_country %></a>
+
+        <a class="dropdown-item disabled" href="#"> <strong>Postal code:</strong>
+        <%= @order.from_postal_code %></a>
+
+      </div>
+
+    </div>
+
+     <br>
+
+    <div class="dropdown show">
+      <strong>Sender:</strong>
+       <div>
+      <%= @order.from_name %>
+      </div>
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Details</a>
+       
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+       <a class="dropdown-item disabled" href="#"> <strong>Phone:</strong>
+        <%= @order.from_phone %></a>
+
+      <a class="dropdown-item disabled" href="#"> <strong>Email:</strong>
+        <%= @order.from_email %></a>
+
+
+      </div>
+
+    </div>  
+    
+    <% if @order.from_special_instructions.present? %>
+      <br>
+        <p>
+          <strong>Special instructions:</strong>
+          <%= @order.from_special_instructions %>
+        </p>
+    <% end %>
+
+    <hr>
+
+ 
+
+
+   
+    <div class="dropdown show">
+        <strong>To Address:</strong>
+
+        <div>
+      <%= @order.to_address %>
+      </div>
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Details</a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+        <% if @order.to_unit_no.present? %>
+           <a class="dropdown-item disabled" href="#"> <strong>Unit number:</strong>
+        <%= @order.to_unit_no %></a>
+        <% end %>
+
+        <% if @order.to_complex.present? %>
+        <a class="dropdown-item disabled" href="#"> <strong>Complex name:</strong>
+        <%= @order.to_complex %></a>
+        <% end %>
+
+          <a class="dropdown-item disabled" href="#"> <strong>Street number:</strong>
+          <%= @order.to_street_number %></a>
+          
+            <a class="dropdown-item disabled" href="#"><strong>Street name:</strong>
+          <%= @order.to_route %></a>
+
+            <a class="dropdown-item disabled" href="#"><strong>City:</strong>
+          <%= @order.to_locality %></a>
+
+          <a class="dropdown-item disabled" href="#"><strong>Province:</strong>
+          <%= @order.to_administrative_area_level_1 %></a>
+
+          <a class="dropdown-item disabled" href="#"> <strong>Country:</strong>
+          <%= @order.to_country %></a>
+
+          <a class="dropdown-item disabled" href="#"> <strong>Postal code:</strong>
+          <%= @order.to_postal_code %></a>
+
+      </div>
+
+    </div>
+
+    <br>
+
+   
+    <div class="dropdown show">
+         <strong>Receiver:</strong>
+          <div>
+      <%= @order.to_name %>
+       </div>
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Details</a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+        <a class="dropdown-item disabled" href="#"> <strong>Phone:</strong>
+        <%= @order.to_phone %></a>
+
+        <a class="dropdown-item disabled" href="#"> <strong>Email:</strong>
+        <%= @order.to_email %></a>
+
+
+      </div>
+
+    </div>  
+
+    <% if @order.to_special_instructions.present? %>
+      <br>
+      <p>
+        <strong>Special instructions:</strong>
+        <%= @order.to_special_instructions %>
+      </p>
+    <% end %>
+
+        <%# ________________________________________________________ %> 
+        <hr>
+
+  <% if @order.quotes.first.nil? %>
+       <div class="btn-grp mx-auto">
+      <i class='fas fa-box bounce'></i>&nbsp;&nbsp;&nbsp;<%= link_to 'Add Parcel(s)', new_order_parcel_path(@order), :class => "flex-3 btn btn ml-auto", data: { disable_with: "Hop'n" } %>
+      </div>
+
+       <div> <br> </div>
+    <% end %>
+      
+      <% if @order.parcels.first.present? %>
+
+         <strong>Parcel(s):</strong>
+           <% for parcel in @order.parcels %>
+          <div>
+        
+                     
+
+  <div class="dropdown">
+   <% if parcel.size == "parcel-a4-envelope"%>
+                        <%= "Extra Small / A4" %>
+                        <% elsif parcel.size == "parcel-small" %>
+                        <%= "Small" %>
+                        <% elsif parcel.size == "parcel-medium" %>
+                        <%= "Medium" %>
+                        <% elsif parcel.size == "parcel-large" %>
+                        <%= "Large" %>
+                        <% elsif parcel.size == "parcel-xlarge" %>
+                        <%= "Extra Large" %>
+                        <% else %>
+                        <%= "N/A" %>
+                      <% end %>
+     &nbsp;&nbsp;&nbsp;(Ref no: <%= parcel.reference %>)
+    
+          <% if @order.quotes.first.nil? %>
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to 'Edit', edit_order_parcel_path(@order, parcel), data: { turbolinks: false }, :class => "dropdown-item" %>
+            <%= link_to 'Delete', [@order, parcel], method: :delete, data: { confirm: 'Are you sure?' }, :class => "dropdown-item" %>
+        </div> 
+          <% end %>
+        
+  </div>
+          
+
+        </div>
+         <% end %>
+        
+      <% end %>
+
+    <%# ________________________________________________________ %> 
+
+
+
+    <% if @order.processed == false %>
+          <hr>
+
+        <% if @order.quotes.first.present? %>
+          <%= link_to 'Edit Quote', edit_order_path(@order), data: { turbolinks: false }, :class => "btn disabled" %> |
+            <% else %>
+          <%= link_to 'Edit Quote', edit_order_path(@order), data: { turbolinks: false }, :class => "btn" %> |
+        <% end %>  
+          <td><%= link_to 'Delete Quote', @order, method: :delete, data: { confirm: 'Are you sure?' }, data: { turbolinks: false }, :class => "btn" %></td>
+    <% end %>
+    
+       
+
+
+        <hr>
+    
+
+    <% if @order.quotes.first.nil? && @order.parcels.first.present? %>
+
+      <div class="btn-grp mx-auto">
+      <%# <%= link_to 'Add Quote', order_quotes_path(@order), :class => "btn" %> 
+      <i class='fas fa-carrot bounce'></i>&nbsp;&nbsp;&nbsp;<%= link_to 'GET QUOTE', new_order_quote_path(@order), :class => "flex-3 btn btn ml-auto", data: { disable_with: "Hop'n" } %>
+      </div>
+      
+    <% elsif @order.parcels.first.present? %>
+
+
+
+          <div> <br> </div>
+          <h2>Quote Price</h2>
+        
+          <hr>
+<div class="row justify-content-center">
+          <% for quote in @order.quotes %>
+            <ul>
+              <li style="font-weight: bold;">Quoted price: R<%= quote.price_incl_vat %></li>
+            </ul>
+          <!--  <ul>
+              <li style="font-weight: bold;"> <%= JSON.parse(quote.quote_response)["third_party"]["fullfillment_options"][0]["collected_before"].to_datetime %></li>
+             </ul> -->
+          <% end %>
+</div>
+        
+
+          <% if @order.processed == false %>
+            
+            
+     
+              <%= form_with model: @order_item do |f| %>
+           
+                <%= f.hidden_field :order_id, value: @order.id, class: "form-control" %>
+                <%= f.hidden_field :quantity, value: 1, min: 1, class: "form-control" %>
+
+           
+           <div class="btn-grp mx-auto">
+              <i class='fas fa-shopping-cart bounce'></i>&nbsp;&nbsp;&nbsp;<%= f.submit "Add to Cart & Checkout", class: 'btn', name: 'route_to[single]' %>
+              
+           </div>
+            <% end %>
+
+            
+           <hr>
+
+          
+           <%# _________________ %>
+            
+            <%= link_to 'Delete Quote', [@order, quote], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn", data: { disable_with: "Deleting..." } %> 
+
+
+          
+            <div> <br> </div>
+          <% end %>
+
+    <% end %>
+
+    <%= link_to 'Back', orders_path, data: { turbolinks: false }, :class => "btn" %>
+
+    <div> <br> </div>
+
+</div>
+
+
+

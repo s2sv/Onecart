@@ -1,0 +1,27 @@
+
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.full_error :confirmation_token %>
+  <div class="form-signin">
+
+<form class="form-signin">
+
+  <h1 class="h3 mb-3 font-weight-normal">Resend confirmation instructions</h1>
+  
+  <%= f.input :email,
+                required: true,
+                autofocus: true,
+                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                input_html: { autocomplete: "email" } %>
+
+ 
+   <div class="form-actions">
+    <%= f.button :submit, "Send instructions" %>
+  </div>
+  
+  <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+</form>
+
+<% end %>
+
+<%= render "devise/shared/links" %>
