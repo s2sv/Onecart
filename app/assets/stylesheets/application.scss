@@ -35,7 +35,7 @@
 
 h1 {
 
-    color: #F167B0;
+    color: #05386B;
      
     }
 
@@ -77,7 +77,7 @@ p{
 	font-weight: 500 !important;
 	text-transform: uppercase;
 	color: #fff !important;
-	background-color: #F167B0 !important;
+	background-color: #05386B !important;
     border: 1px  solid #fff !important;
     
 
@@ -98,7 +98,7 @@ p{
 .navbar-expand-lg {
 
 
-	background-color: #ffffff !important; 
+	background-color: #5CDB95 !important; 
 	
 	font-weight: 300;
 	margin-bottom: -2px;
@@ -110,8 +110,8 @@ p{
 }
 
 .navbar .navbar-brand {  /*HAASTIG TOP LEFT TITLE*/
-    color: #F167B0;
-    font-style: italic;
+    color: #05386B;
+    // font-style: italic;
     font-weight: bold;
     font-size: 30px;
     text-transform: uppercase;
@@ -126,7 +126,7 @@ p{
 .navbar .navbar-toggler {
 
     background-color: transparent;
-    border: 1px solid #F167B0;
+    border: 1px solid #05386B;
  
 }
 
@@ -146,7 +146,7 @@ p{
 
 // _________________________
 
-$barcolor: #F167B0;
+$barcolor: #05386B;
 $barheight:  3px;
 
 /*remove bootstrap default svg background */
@@ -216,7 +216,7 @@ $barheight:  3px;
   
 
     height: 30px;
-	color:  #F167B0;
+	color:  #05386B;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -227,7 +227,7 @@ $barheight:  3px;
 
 .navbar-expand-lg .navbar-nav .nav-link:hover {
  
-    color:  #F167B0;
+    color:  #05386B;
     font-weight: bold;
  
 }
@@ -280,10 +280,10 @@ $barheight:  3px;
 /* _______________________________________________________________ */
 
 .navbar .navbar-brand:hover {
-    color: #F167B0;
-    font-style: italic;
+    color: #05386B;
+    // font-style: italic;
     font-weight: bold;
-    border-bottom: solid 0px #F167B0;
+    border-bottom: solid 0px #05386B;
    
 }	
 
@@ -295,11 +295,11 @@ $barheight:  3px;
 
 
 .nav.navbar-nav.navbar-right li a:hover {
-	color: #F167B0;
+	color: #05386B;
 }
 
 .nav.navbar-nav.navbar-right li a:active {
-	color: #F167B0;
+	color: #05386B;
 }
 
 
@@ -337,16 +337,16 @@ $barheight:  3px;
     border-radius: 5;
     font-weight: bold;
 	border: 0;
-    background-color: #F167B0 !important;
-    border-color: #F167B0 !important;
+    background-color: #05386B !important;
+    border-color: #05386B !important;
 }
 
 .flex-2{
 	margin-left: 5px;
-	color: #F167B0 !important;
+	color: #05386B !important;
 	font-weight: bold;
 	border: 0;
-	border-color: #F167B0 !important;
+	border-color: #05386B !important;
 	border-radius: 5;
 	background-color: #ffffff00 !important;
 }

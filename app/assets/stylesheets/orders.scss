@@ -1,6 +1,9 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body{
+background-color: #5CDB95;
+}
 
 #neworder.container div#left-side.col-lg-6.col-md-6 {
     border-right: 1px solid lightgray;
@@ -20,8 +23,8 @@ svg.svg-inline--fa.fa-carrot.fa-w-16.fa-spin{
     border-radius: 5;
     font-weight: bold;
 	border: 0;
-    background-color: #F167B0 !important;
-    border-color: #F167B0 !important;
+    background-color: #05386B !important;
+    border-color: #05386B !important;
 
     width: 81.02px;
     height: 37.29px;
